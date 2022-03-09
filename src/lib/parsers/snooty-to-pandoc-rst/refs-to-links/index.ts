@@ -1,4 +1,4 @@
-const REF = /:ref:`(.*)(<.*>)?`/g;
+const REF = /:ref:`([^<]*)(<([^<]*)>)?`/g;
 
 interface warning {
   warnIfMatches: RegExp;
@@ -13,7 +13,8 @@ function convertRefsToLinks(
 ): string {
   const inputRefsConvertedToLinks = input.replaceAll(
     REF,
-    (_match: string, linkText: string, ref?: string): string => {
+    (_match: string, linkText: string, _: string, ref?: string): string => {
+      console.log({ linkText, ref });
       let href = 'ADD_LINK_HERE';
       if (ref && refs[ref]) {
         href = baseUrl + refs[ref].relativeUrl;

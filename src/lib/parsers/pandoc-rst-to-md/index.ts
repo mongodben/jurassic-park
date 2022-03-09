@@ -10,8 +10,8 @@ async function rstToMd(inputRst: string): Promise<string> {
   const timestamp = Date.now().toString();
   const tempDir = 'tmp_' + timestamp;
   const tempDirPath = path.join(homedir(), tempDir);
-  if (!fs.existsSync(tempDir)) {
-    fs.mkdirSync(tempDir);
+  if (!fs.existsSync(tempDirPath)) {
+    fs.mkdirSync(tempDirPath);
   }
   try {
     const tempRstFilePath = path.join(
@@ -19,7 +19,7 @@ async function rstToMd(inputRst: string): Promise<string> {
       Date.now().toString() + '.rst',
     );
     fs.writeFileSync(tempRstFilePath, inputRst);
-    const args = `pandoc ${tempRstFilePath} -f rst -t gfm --standalone`;
+    const args = `pandoc ${tempRstFilePath} -f rst -t gfm`;
     const { stdout, stderr } = await exec(args);
     if (stderr) {
       console.log('there was an error with pandoc at stderr:');
