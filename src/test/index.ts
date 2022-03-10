@@ -9,11 +9,11 @@
  * section of your package.json file)
  */
 
-import {expect} from "chai";
-import fs from "fs-extra";
+import { expect } from 'chai';
+import fs from 'fs-extra';
 
-const sandboxRoot = "./sandbox";
-const samplesRoot = "./samples";
+const sandboxRoot = './sandbox';
+const samplesRoot = './samples';
 
 /**
  * Clone any files in a "./samples" folder into
@@ -24,7 +24,7 @@ const samplesRoot = "./samples";
  * reset back to an original state prior to running a test.
  */
 function resetSandbox() {
-  if(!fs.existsSync(samplesRoot)){
+  if (!fs.existsSync(samplesRoot)) {
     // Then no samples exist, and no sandbox needed
     return;
   }
@@ -33,21 +33,12 @@ function resetSandbox() {
   fs.copySync(samplesRoot, sandboxRoot);
 }
 
-describe("Test Suite", function () {
-
-  before(function(){
+describe('Test Suite', function () {
+  before(function () {
     resetSandbox();
   });
 
-  describe("Test Group", function () {
-    it("can do something", function () {
-      resetSandbox();
-      expect(false).to.be.true;
-    });
-  });
-
-  after(function(){
+  after(function () {
     resetSandbox();
   });
-
 });

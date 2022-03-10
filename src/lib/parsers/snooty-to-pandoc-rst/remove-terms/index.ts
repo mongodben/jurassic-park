@@ -1,5 +1,5 @@
 // like: :term:`text blah blah <text>`, where <text> is optional
-const TERM = /:ref:`([^<]*)(<([^<]*)>)?`/g;
+const TERM = /:term:`([^<`]*)(<(.*)>)?`/g;
 
 function removeTerms(input: string): string {
   const inputTermsRemoved = input.replaceAll(

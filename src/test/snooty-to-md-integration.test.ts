@@ -11,15 +11,13 @@ import refs from '$/config/refs.json';
 import sourceConstants from '$/config/source-constants.json';
 import substitutions from '$/config/substitutions.json';
 import fs from 'fs';
+import path from 'path';
 
 it('Test pipeline til .md out', async () => {
-  let testRstInput = fs.readFileSync(
-    '/Users/ben.p/projects/jurassic-park/src/test/input.txt',
-    {
-      encoding: 'utf8',
-      flag: 'r',
-    },
-  );
+  let testRstInput = fs.readFileSync(path.join('samples', 'input.txt'), {
+    encoding: 'utf8',
+    flag: 'r',
+  });
 
   // giza to snooty
   testRstInput = addStepYamlAsRst(
