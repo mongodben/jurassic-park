@@ -1,4 +1,4 @@
-import removeTerms from '@/parsers/snooty-to-pandoc-rst/remove-terms';
+import removeTerms from '../lib/parsers/snooty-to-pandoc-rst/remove-terms.js';
 import { expect } from 'chai';
 import fs from 'fs';
 import path from 'path';

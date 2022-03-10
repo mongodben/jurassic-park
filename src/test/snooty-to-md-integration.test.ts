@@ -1,19 +1,40 @@
-import addStepYamlAsRst from '@/parsers/giza-to-snooty/add-step-yaml-as-rst';
-import convertRefsToLinks from '@/parsers/snooty-to-pandoc-rst/refs-to-links';
-import removeTerms from '@/parsers/snooty-to-pandoc-rst/remove-terms';
-import replaceIncludesWithFakeDirectives from '@/parsers/snooty-to-pandoc-rst/replace-includes-with-fake-directive';
-import replaceRolesWithLinks from '@/parsers/snooty-to-pandoc-rst/replace-link-roles-with-links';
-import replaceSourceConstantsWithValue from '@/parsers/snooty-to-pandoc-rst/replace-source-constants-with-value';
-import replaceSubstitutionsWithValue from '@/parsers/snooty-to-pandoc-rst/replace-substitutions-with-value';
-import pandocRstToMd from '@/parsers/pandoc-rst-to-md';
-import linkRoles from '$/config/link-roles.json';
-import refs from '$/config/refs.json';
-import sourceConstants from '$/config/source-constants.json';
-import substitutions from '$/config/substitutions.json';
+import addStepYamlAsRst from '../lib/parsers/giza-to-snooty/add-step-yaml-as-rst.js';
+import convertRefsToLinks from '../lib/parsers/snooty-to-pandoc-rst/refs-to-links.js';
+import removeTerms from '../lib/parsers/snooty-to-pandoc-rst/remove-terms.js';
+import replaceIncludesWithFakeDirectives from '../lib/parsers/snooty-to-pandoc-rst/replace-includes-with-fake-directive.js';
+import replaceRolesWithLinks from '../lib/parsers/snooty-to-pandoc-rst/replace-link-roles-with-links.js';
+import replaceSourceConstantsWithValue from '../lib/parsers/snooty-to-pandoc-rst/replace-source-constants-with-value.js';
+import replaceSubstitutionsWithValue from '../lib/parsers/snooty-to-pandoc-rst/replace-substitutions-with-value.js';
+import pandocRstToMd from '../lib/parsers/pandoc-rst-to-md.js';
 import fs from 'fs';
 import path from 'path';
 
 it('Test pipeline til .md out', async () => {
+  const linkRoles = JSON.parse(
+    fs.readFileSync('samples/link-roles.json', {
+      encoding: 'utf8',
+      flag: 'r',
+    }),
+  );
+  const refs = JSON.parse(
+    fs.readFileSync('samples/refs.json', {
+      encoding: 'utf8',
+      flag: 'r',
+    }),
+  );
+  const sourceConstants = JSON.parse(
+    fs.readFileSync('samples/source-constants.json', {
+      encoding: 'utf8',
+      flag: 'r',
+    }),
+  );
+  const substitutions = JSON.parse(
+    fs.readFileSync('samples/substitutions.json', {
+      encoding: 'utf8',
+      flag: 'r',
+    }),
+  );
+
   let testRstInput = fs.readFileSync(path.join('samples', 'input.txt'), {
     encoding: 'utf8',
     flag: 'r',

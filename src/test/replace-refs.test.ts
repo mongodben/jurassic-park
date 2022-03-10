@@ -1,4 +1,4 @@
-import convertRefsToLinks from '@/parsers/snooty-to-pandoc-rst/refs-to-links';
+import convertRefsToLinks from '../lib/parsers/snooty-to-pandoc-rst/refs-to-links.js';
 import { expect } from 'chai';
 
 const refs = {

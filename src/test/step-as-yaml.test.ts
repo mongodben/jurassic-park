@@ -1,4 +1,4 @@
-import addStepYamlAsRst from '@/parsers/giza-to-snooty/add-step-yaml-as-rst';
+import addStepYamlAsRst from '../lib/parsers/giza-to-snooty/add-step-yaml-as-rst.js';
 import path from 'path';
 import { expect } from 'chai';
 

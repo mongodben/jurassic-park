@@ -1,4 +1,4 @@
-import replaceSourceConstantsWithValue from '@/parsers/snooty-to-pandoc-rst/replace-source-constants-with-value';
+import replaceSourceConstantsWithValue from '../lib/parsers/snooty-to-pandoc-rst/replace-source-constants-with-value.js';
 import { expect } from 'chai';
 
 const sourceConstants = {

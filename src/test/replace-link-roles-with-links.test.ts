@@ -1,4 +1,4 @@
-import replaceRolesWithLinks from '@/parsers/snooty-to-pandoc-rst/replace-link-roles-with-links';
+import replaceRolesWithLinks from '../lib/parsers/snooty-to-pandoc-rst/replace-link-roles-with-links.js';
 import { expect } from 'chai';
 
 const linksMap = {
