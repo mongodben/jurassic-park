@@ -22,7 +22,7 @@ function convertRefsToLinks(
       if (warning && warning.warnIfMatches.test(href)) {
         href += `__${warning.warningInclusion}__`;
       }
-      return `\`${linkText} <${href}>\`_`;
+      return `\`${linkText}<${href}>\`_`;
     },
   );
   return inputRefsConvertedToLinks;
